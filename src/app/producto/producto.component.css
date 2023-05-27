@@ -1,0 +1,22 @@
+.error{
+    color: red;
+    font-size: 12px;
+}
+
+.btn-primary{
+    background-color: rgb(180, 210, 212);
+    border-color: rgb(180, 210, 212);
+}
+.btn-primary:hover{
+    background-color: darkgrey;
+    border-color:darkgrey;
+}
+
+.form{
+    width: 700px;
+}
+
+.container{
+    padding-bottom: 81px;
+
+}

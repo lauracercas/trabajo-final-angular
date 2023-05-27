@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <form [formGroup]="form" class="row p-4 form" novalidate>
+            <h2 class="text-center">Añadir Producto</h2>
+            <div class="col-md-5 mb-2">
+                <label for="nombreProducto" class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombreProducto" id="nombreProducto"
+                    placeholder="Nombre del producto">
+                <div class="error"
+                    *ngIf="(form.controls['nombreProducto'].touched || form.controls['nombreProducto'].dirty) && form.controls['nombreProducto'].errors?.['required']">
+                    El nombre de producto es obligatorio
+                </div>
+            </div>
+            <div class="col-md-3 mb-2">
+                <label for="codigo" class="form-label">Código</label>
+                <input type="text" class="form-control" id="codigo" formControlName="codigo" placeholder="Cod producto">
+                <div class="error"
+                    *ngIf="(form.controls['codigo'].touched || form.controls['codigo'].dirty) && form.controls['codigo'].errors?.['required']">
+                    El código de producto es obligatorio
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-2">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select id="categoria" formControlName="categoria" class="form-select">
+                    <option *ngFor="let c of categorias ; let id = index" value={{c.id}}>{{c.nombre}}</option>
+                </select>
+                <div class="error"
+                    *ngIf="(form.controls['categoria'].touched || form.controls['categoria'].dirty) && form.controls['categoria'].errors?.['required']">
+                    La categoria es obligatoria
+                </div>
+            </div>
+            <div class="col-md-12 mb-2">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <textarea class="form-control" formControlName="descripcion" placeholder="Descripción del producto" id="descripcion"></textarea>
+                <div class="error"
+                    *ngIf="(form.controls['descripcion'].touched || form.controls['descripcion'].dirty) && form.controls['descripcion'].errors?.['required']">
+                    La descripción del producto es obligatoria
+                </div>
+            </div>
+
+            <div class="col-md-5 mb-2">
+                <label for="precio" class="form-label">Precio</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" formControlName="precio" id="precio" placeholder="Precio">
+                    <div class="input-group-text">€</div>
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['precio'].touched || form.controls['precio'].dirty) && form.controls['precio'].errors?.['required']">
+                   El precio es obligatorio
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['precio'].touched ) && form.controls['precio'].errors?.['min']">
+                   El precio debe ser mayor a 0
+                </div>
+            </div>
+            <div class="col-md-5 mb-2">
+                <label for="stock" class="form-label">Unidades</label>
+                <input type="number" class="form-control" formControlName="stock" min=1 id="stock" placeholder="Unidades disponibles">
+                <div class="error"
+                    *ngIf="(form.controls['stock'].touched || form.controls['stock'].dirty) && form.controls['stock'].errors?.['required']">
+                   Las unidades disponibles son obligatorias
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['stock'].touched ) && form.controls['stock'].errors?.['min']">
+                   El stock debe ser mayor a 0
+                </div>
+            </div>
+
+            <div class="col-md-12 mb-2">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="text" (change)="this.verImagen()" formControlName="imagen" class="form-control" placeholder="Url Imagen del producto"
+                    id="imagen">
+                <img class="mt-2" [hidden]="!viewImg" [src]="img" id="imgUrl" style="height: 300px">
+
+                <div class="error"
+                    *ngIf="(form.controls['imagen'].touched || form.controls['imagen'].dirty) && form.controls['imagen'].errors?.['required']">
+                   La imagen es obligatoria
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['imagen'].touched ) && form.controls['imagen'].errors?.['pattern']">
+                   La url de la imagen no es válida
+                </div>
+            </div>
+            <div class="col-12 my-2">
+                <input type="button" (click)="guardarProducto()" class="btn btn-primary" value="Guardar">
+            </div>
+        </form>
+    </div>
+
+</div>

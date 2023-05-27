@@ -1,0 +1,13 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-primary{
+    background-color: rgb(180, 210, 212);
+    border-color: rgb(180, 210, 212);
+}
+.btn-primary:hover{
+    background-color: darkgrey;
+    border-color:darkgrey;
+}

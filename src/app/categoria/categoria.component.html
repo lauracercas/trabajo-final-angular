@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <form [formGroup]="form" class="row p-4" style="width: 400px">
+            <h2 class="text-center">Añadir Categoria</h2>
+            <div class="form-group col-md-12 mb-2">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" required class="form-control" formControlName="nombre" id="nombre"
+                    placeholder="Nombre de la categoria">
+                <div class="error"
+                    *ngIf="(form.controls['nombre'].touched || form.controls['nombre'].dirty) && form.controls['nombre'].errors?.['required']">
+                    El nombre es obligatorio
+                </div>
+            </div>
+            <div class="col-12 my-2">
+                <input type="submit" (click)="guardarCategoria()" class="btn btn-primary" value="Guardar">
+            </div>
+        </form>
+    </div>
+
+</div>

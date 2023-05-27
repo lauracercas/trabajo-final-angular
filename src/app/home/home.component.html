@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8 ">
+            <div class="container-fluid p-4" id="productos">
+                <h4>Productos</h4>
+                <div class="row">
+                    <div *ngIf="categoriasView" class="accordion" id="accordionCategorias">
+                        <div  *ngFor="let c of categorias ; let id = index" class="accordion-item">
+                            <h2 class="accordion-header" id="heading-{{id}}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    attr.data-bs-target="#collapse-{{id}}" aria-expanded="true"
+                                    attr.aria-controls="collapse-{{id}}">
+                                    {{c.nombre}}
+                                </button>
+                            </h2>
+                            <div id="collapse-{{id}}" class="accordion-collapse collapse" attr.aria-labelledby="heading-{{id}}"
+                                data-bs-parent="#accordionCategorias">
+                                <div class="accordion-body" id="accordion-body-{{id}}">
+                                    <div class="container-fluid">
+                                        <div class="row" id="row-{{id}}">
+                                            <div *ngFor="let p of c.productos ; let idP = index"
+                                                class="col-12 col-md-6 col-lg-4">
+                                                <div class="card mt-2" id="card-c{{id}}-p{{idP}}">
+                                                    <img src={{p.imagen}} alt={{p.codigo}} class="card-img-top p-2 zoom">
+                                                    <div class="card-body p-2" id="card-body-c{{id}}-p{{idP}}">
+                                                        <h5 class="card-title">{{p.nombre}}</h5>
+                                                        <p class="card-text"><small class="text-muted">{{p.codigo}}</small></p>
+                                                        <p class="card-text">{{p.descripcion}}</p>
+                                                        <p class="card-text list-inline-item"><small class="text-muted"
+                                                                id="stockDisp-c{{id}}-p{{idP}}">{{p.stock-p.cesta}} unidades
+                                                                disponibles</small></p>
+                                                        <ul class="list-inline" id="list-c{{id}}-p{{idP}}">
+                                                            <p class="card-text list-inline-item">{{p.precio}} €</p>
+                                                            <button *ngIf="(p.stock-p.cesta)>0" class="btn btn-outline-dark flex-shrink-0"
+                                                                (click)="addProducto(p)" type="button"
+                                                                id="button-cart-c{{id}}-p{{idP}}">
+                                                                <i class="bi bi-cart-plus-fill"></i></button>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="c.productos.length==0">
+                                                <h6>No hay ningun producto en esta categoria</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                    </div>
+                    <div *ngIf="!categoriasView">
+                        <h5>No hay ninguna Categoria ni Producto añadido</h5>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="container-fluid p-4" id="cesta">
+                <h4>Cesta</h4>
+                <ul *ngIf="cesta.length>0" class="list-group mb-3" id="list-cesta">
+                    <li *ngFor="let p of cesta ; let id = index" class="list-group-item d-flex justify-content-between"
+                        id="item-{{id}}">
+                        <div class="pr-1">
+                            <img src={{p.imagen}} alt={{p.codigo}} class="rounded-circle zoom" style="width: 100px">
+                        </div>
+                        <div id="prod-{{id}}">
+                            <div class="flex-fill">
+                                <h6 class="my-0">{{p.nombre}}</h6>
+                            </div>
+                            <div class="flex-fill"><small class="text-muted">{{p.codigo}}</small></div>
+                            <div class="flex-fill pt-4" id="precio-{{id}}"><strong>{{p.precio*p.cesta}} €</strong></div>
+        
+                        </div>
+                        <div id="but-{{id}}">
+                            <select className="form-control" id="select-{{id}}" #select [value]=p.cesta (change)="this.changeSelect(p, select.value)">
+                                <option *ngFor="let v of stockInCesta(p.stock); let index = index" value={{index+1}} >{{index+1}}</option>
+                            </select>
+                            <div class="flex-fill pt-3">
+                                <button class="btn btn-outline-dark flex-shrink-0" type="button" id="delete-{{id}}" (click)="deleteProducto(p)"><i class="bi bi-trash-fill"></i></button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between" id="total">
+                        <div class="flex-fill"><span>Total:  </span><strong>{{total}} €</strong></div>
+                    </li>
+                    <button type="button" class="btn btn-primary" (click)="pagar()">Pagar</button>
+                </ul>
+                
+                <h5 *ngIf="cesta.length==0">No hay ningún producto en la cesta</h5>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

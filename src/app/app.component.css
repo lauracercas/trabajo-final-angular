@@ -1,0 +1,42 @@
+.nav{
+    background-color: black;
+    min-height: 100%;
+    position: relative;
+}
+.link{
+    color:rgb(180, 210, 212);
+
+}
+.title{
+    text-align: center;
+}
+
+
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
+
+.page-footer{
+    background-color: grey;
+    color: white;
+}
+.titulo{
+    width: 400px;
+}
+
+.divTitulo{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 249, 247);
+}

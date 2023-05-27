@@ -1,0 +1,35 @@
+<div class="app">
+    <body>
+        <header>
+            <div class="divTitulo">
+                <img class="titulo" src="./assets/frikishop.png">
+            </div>
+    
+            <nav>
+                <ul class="nav justify-content-center body">
+                    <li class="nav-item m-3"><a class="link" routerLink="/"><i class="link bi bi-house-door-fill"></i> Home</a></li>
+                    <li *ngIf="admin" class="nav-item m-3"><a class="link" routerLink="/categoria"><i class="link bi bi-bookmark-plus-fill"></i> Añadir Categoria</a></li>
+                    <li *ngIf="admin && categoria" class="nav-item m-3"><a class="link" routerLink="/producto"><i class="link bi bi-plus-square-fill"></i> Añadir Producto</a></li>
+                    <li class="nav-item m-3"><a class="link" routerLink="/login"><i class="bi bi-person-fill"></i> {{login}}</a></li>
+    
+                </ul>
+            </nav>
+    
+        </header>
+    
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    
+        <div  class="footer">
+            <div class="text-center p-4" >
+                © 2022 Trabajo Final - Angular - Frameworks Frontend - Laura Cercas Ramos
+            </div>
+        </div>
+    </body>
+    
+
+</div>
+
+
+

@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <form [formGroup]="form" class="row p-4">
+            <h2 class="text-center">Pagar</h2>
+            <div class="col-md-6 mb-2">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Nombre">
+                <div class="error"
+                    *ngIf="(form.controls['nombre'].touched || form.controls['nombre'].dirty) && form.controls['nombre'].errors?.['required']">
+                    El nombre es obligatorio
+                </div>
+            </div>
+            <div class="col-md-6 mb-2">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" formControlName="apellidos" id="apellidos"
+                    placeholder="Apellidos">
+                <div class="error"
+                    *ngIf="(form.controls['apellidos'].touched || form.controls['apellidos'].dirty) && form.controls['apellidos'].errors?.['required']">
+                    Los apellidos son obligatorios
+                </div>
+            </div>
+            <div class="col-md-7 mb-2">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" formControlName="direccion" id="direccion"
+                    placeholder="Dirección">
+                <div class="error"
+                    *ngIf="(form.controls['direccion'].touched || form.controls['direccion'].dirty) && form.controls['direccion'].errors?.['required']">
+                    La direccion es obligatoria
+                </div>
+            </div>
+            <div class="col-md-5 mb-2">
+                <label for="codpostal" class="form-label">Codigo Postal</label>
+                <input type="text" class="form-control" formControlName="codpostal" id="codpostal"
+                    placeholder="Cod. Postal">
+                <div class="error"
+                    *ngIf="(form.controls['codpostal'].touched || form.controls['codpostal'].dirty) && form.controls['codpostal'].errors?.['required']">
+                    El Código Postal es obligatorio
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['codpostal'].touched ) && (form.controls['codpostal'].errors?.['pattern'] || form.controls['codpostal'].errors?.['pattern'])">
+                   El Código Postal deben ser sólo números
+                </div>
+            </div>
+            <div class="col-md-7 mb-2">
+                <label for="provincia" class="form-label">Provincia</label>
+                <input type="text" class="form-control" formControlName="provincia" id="provincia"
+                    placeholder="Provincia">
+                <div class="error"
+                    *ngIf="(form.controls['provincia'].touched || form.controls['provincia'].dirty) && form.controls['provincia'].errors?.['required']">
+                    La provincia es obligatoria
+                </div>
+            </div>
+            <div class="col-md-5 mb-2">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" formControlName="telefono" id="telefono"
+                    placeholder="Teléfono">
+                <div class="error"
+                    *ngIf="(form.controls['telefono'].touched || form.controls['telefono'].dirty) && form.controls['telefono'].errors?.['required']">
+                    El numero de teléfono es obligatorio
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['telefono'].touched ) && (form.controls['telefono'].errors?.['pattern'] || form.controls['telefono'].errors?.['pattern'])">
+                   El numero de telefono debe ser 6 números
+                </div>
+            </div>
+            <div class="col-md-8 mb-2">
+                <label for="tarjeta" class="form-label">Num Tarjeta</label>
+                <input type="text" class="form-control" formControlName="tarjeta" id="tarjeta"
+                    placeholder="Num Tarjeta">
+                <div class="error"
+                    *ngIf="(form.controls['tarjeta'].touched || form.controls['tarjeta'].dirty) && form.controls['tarjeta'].errors?.['required']">
+                    El numero de tarjeta es obligatorio
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['tarjeta'].touched ) && (form.controls['tarjeta'].errors?.['pattern'] || form.controls['tarjeta'].errors?.['pattern'])">
+                   El numero de tarjeta debe ser solo números
+                </div>
+            </div>
+            <div class="col-md-2 mb-2">
+                <label for="fecexp" class="form-label">Fec. Exp</label>
+                <input type="text" class="form-control" formControlName="fecexp" id="fecexp" placeholder="Fec.Exp">
+                <div class="error"
+                    *ngIf="(form.controls['fecexp'].touched || form.controls['fecexp'].dirty) && form.controls['fecexp'].errors?.['required']">
+                    La fecha de expedicion es obligatoria
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['fecexp'].touched ) && (form.controls['fecexp'].errors?.['pattern'] || form.controls['fecexp'].errors?.['pattern'])">
+                   La fecha de expedicion debe ser solo números
+                </div>
+            </div>
+            <div class="col-md-2 mb-2">
+                <label for="cvc" class="form-label">CVC</label>
+                <input type="text" class="form-control" formControlName="cvc" id="cvc" placeholder="CVC">
+                <div class="error"
+                    *ngIf="(form.controls['cvc'].touched || form.controls['cvc'].dirty) && form.controls['cvc'].errors?.['required']">
+                    El CVC es obligatorio
+                </div>
+                <div class="error"
+                    *ngIf="(form.controls['cvc'].touched ) && (form.controls['cvc'].errors?.['pattern'] || form.controls['cvc'].errors?.['pattern'])">
+                   El CVC debe ser 3 números
+                </div>
+            </div>
+
+            <div class="col-12 my-2">
+                <input type="button" (click)="pagar()" class="btn btn-primary" value="Pagar">
+            </div>
+
+        </form>
+    </div>
+
+</div>
